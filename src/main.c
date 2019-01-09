@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+
 #include "include/main.h"
 
 int main()
@@ -26,12 +28,12 @@ int main()
 		fscanf(fin, "%d %d", &(user[i].priority), &nrProcesses);
 		
 		user[i].first = malloc(sizeof(struct Process));
-		fscanf(fin, "%ld", &(user[i].first.duration));
+		fscanf(fin, "%ld", &(users[i].first.duration));
 		struct Process* prev = users[i].first, *newProcess;
 
 		for(j = 0; j < nrProcesses; j++){
 			newProcess = malloc(sizeof(struct Process));
-			fscanf(fin, "%ld", &(newProcess.duration));
+			fscanf(fin, "%ld", &(newProcess->duration));
 
 			prev->next=newProcess;
 		}
