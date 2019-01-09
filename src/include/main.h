@@ -1,17 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-struct Process
-{
-	long int duration;
-	struct Process *next;	
-};
+#include "datatypes.h"
 
-struct User
-{
-	int priority;
-	struct Process *first;
-};
-
+void schedule(struct User*);
 
 #endif
