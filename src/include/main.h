@@ -5,4 +5,6 @@
 
 void schedule(struct User*);
 
+void executeProcess(int, int, struct Process*);
+
 #endif

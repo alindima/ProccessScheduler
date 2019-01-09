@@ -25,16 +25,20 @@ void readInput(char* filename, struct User **firstUser, int *nrUsers)
 			prevUser->next = currUser;
 		}
 
+		currUser->id=i;
+
 		fscanf(fin, "%d %d", &(currUser->priority), &nrProcesses);
 
 		currUser->first = malloc(sizeof(struct Process));
+		currUser->first->id = 0;
 		fscanf(fin, "%ld", &(currUser->first->duration));
 		struct Process* prev = currUser->first, *newProcess;
 
 		for(j = 1; j < nrProcesses; j++){
 			newProcess = malloc(sizeof(struct Process));
 			fscanf(fin, "%ld", &(newProcess->duration));
-
+			newProcess->id=j;
+			
 			prev->next = newProcess;
 			prev = newProcess;
 		}
