@@ -5,7 +5,7 @@ int main()
 {
 	FILE *fin = fopen("../input/input.txt", "r");
 	int nrUsers, i, j, nrProcesses;
-	User *users;
+	struct User *users;
 
 	if(fin == NULL){
 		printf("Error opening input.txt");
@@ -14,7 +14,7 @@ int main()
 	}
 
 	fscanf(fin, "%d", &nrUsers);
-	users = malloc(nrUsers * sizeof(User));
+	users = malloc(nrUsers * sizeof(struct User));
 
 	if(users == NULL){
 		printf("Could not allocate memory for users");
@@ -25,12 +25,12 @@ int main()
 	for(i = 0; i < nrUsers; i++){
 		fscanf(fin, "%d %d", &(user[i].priority), &nrProcesses);
 		
-		user[i].first = malloc(sizeof(Process));
+		user[i].first = malloc(sizeof(struct Process));
 		fscanf(fin, "%ld", &(user[i].first.duration));
-		Process* prev = users[i].first, *newProcess;
+		struct Process* prev = users[i].first, *newProcess;
 
 		for(j = 0; j < nrProcesses; j++){
-			newProcess = malloc(sizeof(Process));
+			newProcess = malloc(sizeof(struct Process));
 			fscanf(fin, "%ld", &(newProcess.duration));
 
 			prev->next=newProcess;
@@ -42,7 +42,7 @@ int main()
 	for(i = 0; i < nrUsers; i++){
 		printf("%d: %d ", i, users[i].priority);
 		
-		Process *p=users[i].first;
+		struct Process *p=users[i].first;
 
 		while(p!=NULL){
 			printf("%ld ", p->duration);
