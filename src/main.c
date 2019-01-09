@@ -5,7 +5,7 @@
 
 int main()
 {
-	FILE *fin = fopen("../input/input.txt", "r");
+	FILE *fin = fopen("input/input.txt", "r");
 	int nrUsers, i, j, nrProcesses;
 	struct User *users;
 
@@ -31,11 +31,12 @@ int main()
 		fscanf(fin, "%ld", &(users[i].first->duration));
 		struct Process* prev = users[i].first, *newProcess;
 
-		for(j = 0; j < nrProcesses; j++){
+		for(j = 1; j < nrProcesses; j++){
 			newProcess = malloc(sizeof(struct Process));
 			fscanf(fin, "%ld", &(newProcess->duration));
 
 			prev->next=newProcess;
+			prev=newProcess;
 		}
 
 		newProcess->next=NULL;
