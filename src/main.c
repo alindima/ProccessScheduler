@@ -25,10 +25,10 @@ int main()
 	}
 
 	for(i = 0; i < nrUsers; i++){
-		fscanf(fin, "%d %d", &(user[i].priority), &nrProcesses);
+		fscanf(fin, "%d %d", &(users[i].priority), &nrProcesses);
 		
 		user[i].first = malloc(sizeof(struct Process));
-		fscanf(fin, "%ld", &(users[i].first.duration));
+		fscanf(fin, "%ld", &(users[i].first->duration));
 		struct Process* prev = users[i].first, *newProcess;
 
 		for(j = 0; j < nrProcesses; j++){
