@@ -27,6 +27,11 @@ void schedule(struct User* firstUser)
 	struct User *currUser = firstUser, *prevUser = NULL;
 	//TODO: check if initial work needs to be done
 
+	//if(firstUser == NULL){
+	//	printf("lalalalalaaalal\n");
+	//	return;
+	//}
+
 	while(hasWork){
 		bool isLast=false, deleted=false;
 
