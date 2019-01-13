@@ -14,7 +14,7 @@ int main()
 
 	schedule(firstUser);
 
-	printUsers(firstUser);
+	//printUsers(firstUser);
 
 	//TO DO: deallocate memory for processes and for users
 
@@ -28,8 +28,13 @@ void schedule(struct User* firstUser)
 	//TODO: check if initial work needs to be done
 
 	while(hasWork){
+		bool isLast=false, deleted=false;
 
 		executeProcess(currUser->priority, currUser->id, currUser->first);
+
+		if(currUser->next==NULL){
+			isLast=true;
+		}
 
 		//delete process if done
 		if(currUser->first->duration <= 0){
@@ -53,6 +58,7 @@ void schedule(struct User* firstUser)
 
 			currUser = newUser;
 			
+			deleted=true;
 		}
 
 		if(firstUser == NULL){
@@ -62,10 +68,10 @@ void schedule(struct User* firstUser)
 
 		//go back to start if at end
 
-		if(currUser == NULL){
+		if(isLast){
 			currUser = firstUser;
 			prevUser = NULL;
-		}else{
+		}else if(!deleted){
 			prevUser = currUser;
 			currUser = currUser->next;
 		}
