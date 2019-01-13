@@ -32,7 +32,7 @@ void readInput(char* filename, struct User **firstUser, int *nrUsers)
 			prevUser->next = currUser;
 		}
 
-		currUser->id=i;
+		currUser->id = i;
 
 		fscanf(fin, "%d %d", &(currUser->priority), &nrProcesses);
 
@@ -44,7 +44,7 @@ void readInput(char* filename, struct User **firstUser, int *nrUsers)
 		for(j = 1; j < nrProcesses; j++){
 			newProcess = malloc(sizeof(struct Process));
 			fscanf(fin, "%ld", &(newProcess->duration));
-			newProcess->id=j;
+			newProcess->id = j;
 			
 			prev->next = newProcess;
 			prev = newProcess;
