@@ -7,9 +7,7 @@ void readInput(char* filename, struct User **firstUser, int *nrUsers)
 {
 	FILE *fin = fopen(filename, "r");
 	int i, j, nrProcesses;
-	struct User *currUser = *firstUser, *prevUser = *firstUser;
-	*firstUser = malloc(sizeof(struct User));
-	
+
 	if(fin == NULL){
 		printf("Error opening input.txt");
 
@@ -18,10 +16,14 @@ void readInput(char* filename, struct User **firstUser, int *nrUsers)
 
 	fscanf(fin, "%d", nrUsers);
 
-	//if(*nrUsers <= 0){
-	//	*firstUser = NULL;
-	//	return;
-	//}
+	if(*nrUsers <= 0){
+		*firstUser = NULL;
+		return;
+	}
+
+	*firstUser = malloc(sizeof(struct User));
+
+	struct User *currUser = *firstUser, *prevUser = *firstUser;
 
 	for(i = 0; i < *nrUsers; i++){
 		if(i != 0){
